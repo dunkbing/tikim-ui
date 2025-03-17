@@ -14,8 +14,8 @@ import UIKit
 
 @MainActor
 class KeyboardManager: ObservableObject {
-    @Published var keyboardHeight: CGFloat = 0
-    @Published var isVisible = false
+    @Published public var keyboardHeight: CGFloat = 0
+    @Published public var isVisible = false
     private var cancellables: [NSObjectProtocol] = []
 
     init() {
@@ -75,10 +75,11 @@ class KeyboardManager: ObservableObject {
 /// A view modifier that adds padding to account for the keyboard
 struct KeyboardAwareModifier: ViewModifier {
     @StateObject private var keyboard = KeyboardManager()
-    
+    var bottomPadding: CGFloat = 20
+
     func body(content: Content) -> some View {
         content
-            .padding(.bottom, keyboard.isVisible ? keyboard.keyboardHeight - 20 : 0)
+            .padding(.bottom, keyboard.isVisible ? keyboard.keyboardHeight - bottomPadding : 0)
             .animation(.easeOut(duration: 0.25), value: keyboard.isVisible)
     }
 }
@@ -105,6 +106,91 @@ public extension View {
     /// Dismiss the keyboard when tapping outside text fields
     public func dismissKeyboardOnTap() -> some View {
         self.modifier(DismissKeyboardModifier())
+    }
+}
+
+private struct ScrollViewOffsetKey: PreferenceKey {
+    static let defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
+// MARK: - KeyboardAwareScrollView
+public struct KeyboardAwareScrollView<Content: View>: View {
+    @StateObject private var keyboard = KeyboardManager()
+    let content: Content
+    @State private var contentOffset: CGFloat = 0
+    @State private var scrollViewOffset: CGFloat = 0
+
+    public init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+
+    public var body: some View {
+        ScrollView {
+            content
+                .background(GeometryReader { proxy in
+                    Color.clear.preference(
+                        key: ScrollViewOffsetKey.self,
+                        value: proxy.frame(in: .named("scrollView")).minY
+                    )
+                })
+        }
+        .coordinateSpace(name: "scrollView")
+        .onPreferenceChange(ScrollViewOffsetKey.self) { value in
+            scrollViewOffset = value
+        }
+        .onChange(of: keyboard.isVisible) { isVisible in
+            if isVisible {
+                // Get the focused text field
+                guard let firstResponder = UIWindow.keyWindow?.firstResponder else { return }
+                let view = firstResponder
+
+                // Convert the text field's frame to window coordinates
+                let globalFrame = view.convert(view.bounds, to: nil)
+                let keyboardY = UIScreen.main.bounds.height - keyboard.keyboardHeight
+
+                // Calculate if the text field is hidden by the keyboard
+                if globalFrame.maxY > keyboardY {
+                    let offset = globalFrame.maxY - keyboardY + 60 // Add some padding
+                    withAnimation(.easeOut(duration: 0.25)) {
+                        contentOffset = offset
+                    }
+                }
+            } else {
+                withAnimation(.easeOut(duration: 0.25)) {
+                    contentOffset = 0
+                }
+            }
+        }
+        .offset(y: -contentOffset)
+    }
+}
+
+// MARK: - UIWindow Extension
+extension UIWindow {
+    static var keyWindow: UIWindow? {
+        return UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .first(where: { $0 is UIWindowScene })
+            .flatMap({ $0 as? UIWindowScene })?.windows
+            .first(where: \.isKeyWindow)
+    }
+}
+
+// MARK: - UIView Extension
+extension UIView {
+    var firstResponder: UIView? {
+        guard !isFirstResponder else { return self }
+
+        for subview in subviews {
+            if let firstResponder = subview.firstResponder {
+                return firstResponder
+            }
+        }
+
+        return nil
     }
 }
 #endif
