@@ -128,7 +128,7 @@ public struct KeyboardAwareScrollView<Content: View>: View {
     }
 
     public var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             content
                 .background(GeometryReader { proxy in
                     Color.clear.preference(
