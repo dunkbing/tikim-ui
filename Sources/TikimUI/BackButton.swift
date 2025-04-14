@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct CustomBackButton: View {
+public struct BackButton: View {
     @Environment(\.presentationMode) var presentationMode
     var label: String = "Back"
     var color: Color = Color.appAccent
-    
-    var body: some View {
+
+    public init(label: String) {
+        self.label = label
+    }
+
+    public var body: some View {
         Button(action: {
             presentationMode.wrappedValue.dismiss()
         }) {
@@ -31,25 +35,17 @@ struct CustomBackButton: View {
     }
 }
 
-// Extension to use with NavigationView
-extension View {
-    func customBackNavigation(title: String, color: Color = Color.appAccent) -> some View {
-        self.navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    CustomBackButton(label: title, color: color)
-                }
-            }
-    }
-}
-
-// For sheets that need custom dismissal
-struct CustomDismissButton: View {
+public struct DismissButton: View {
     @Binding var isPresented: Bool
     var label: String = "Cancel"
     var color: Color = Color.appRed
-    
-    var body: some View {
+
+    public init(isPresented: Binding<Bool>, label: String) {
+        self._isPresented = isPresented
+        self.label = label
+    }
+
+    public var body: some View {
         Button(action: {
             isPresented = false
         }) {

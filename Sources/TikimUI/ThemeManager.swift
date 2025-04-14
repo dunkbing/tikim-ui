@@ -21,6 +21,28 @@ public enum AppTheme: String, CaseIterable, Identifiable {
         case .dark: return "moon.fill"
         }
     }
+
+    public var primaryColor: Color {
+        switch self {
+        case .system:
+            return Color.appAccent
+        case .light:
+            return CatppuccinColors.Latte.blue
+        case .dark:
+            return CatppuccinColors.Macchiato.blue
+        }
+    }
+
+    public var description: String {
+        switch self {
+        case .system:
+            return "Follow system appearance"
+        case .light:
+            return "Light mode (Catppuccin Latte)"
+        case .dark:
+            return "Dark mode (Catppuccin Macchiato)"
+        }
+    }
 }
 
 @MainActor
@@ -86,7 +108,7 @@ public struct ThemeAwareModifier: ViewModifier {
         content
             .environment(\.colorScheme, themeManager.colorScheme ?? .light)
             .preferredColorScheme(themeManager.colorScheme)
-            .id("theme-\(themeManager.theme)") // Force view recreation on theme change
+            .id("theme-\(themeManager.theme)")
     }
 }
 

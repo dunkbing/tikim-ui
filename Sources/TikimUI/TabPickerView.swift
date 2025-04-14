@@ -18,13 +18,15 @@ public struct TabPickerView<T: Hashable>: View {
     }
 
     public var body: some View {
-        HStack(spacing: 4) {
-            ForEach(0..<options.count, id: \.self) { index in
-                let option = options[index]
-                pickerButton(title: option.title, value: option.value)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 4) {
+                ForEach(0..<options.count, id: \.self) { index in
+                    let option = options[index]
+                    pickerButton(title: option.title, value: option.value)
+                }
             }
+            .padding(4)
         }
-        .padding(4)
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.appSurface1)

@@ -17,12 +17,13 @@ public struct Backport<Content> {
 }
 
 extension View {
-    var backport: Backport<Self> { Backport(self) }
+    public var backport: Backport<Self> { Backport(self) }
 }
 
 extension Backport where Content: View {
+    @available(macOS 12.0, *)
     @ViewBuilder func scrollContentBackground(_ visibility: Visibility) -> some View {
-        if #available(iOS 16, *) {
+        if #available(iOS 16, macOS 13, *) {
             content.scrollContentBackground(visibility)
         } else {
             content
@@ -30,8 +31,31 @@ extension Backport where Content: View {
     }
 
     @ViewBuilder func hideScrollIndicators() -> some View {
-        if #available(iOS 16, *) {
+        if #available(iOS 16, macOS 13, *) {
             content.scrollIndicators(.hidden)
+        } else {
+            content
+        }
+    }
+
+    @ViewBuilder
+    public func hideNavigationBar() -> some View {
+        #if os(iOS)
+        content.navigationBarHidden(true)
+        #endif
+        content
+    }
+
+    @ViewBuilder func customBackNavigation(title: String, color: Color = Color.appAccent) -> some View {
+        if #available(iOS 16, macOS 13, *) {
+            content.navigationBarBackButtonHidden(true)
+//                .toolbar {
+//                    #if !os(macOS)
+//                    ToolbarItem(placement: .navigationBarLeading) {
+//                        BackButton(label: title, color: color)
+//                    }
+//                    #endif
+//                }
         } else {
             content
         }
