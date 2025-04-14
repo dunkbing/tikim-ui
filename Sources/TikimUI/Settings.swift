@@ -217,3 +217,121 @@ extension CustomNavigationBar where LeadingContent == EmptyView, TrailingContent
         )
     }
 }
+
+public struct SettingRowWithIcon: View {
+    let icon: String
+    let color: Color
+    let title: String
+    let value: String?
+    let showChevron: Bool
+
+    public init(
+        icon: String,
+        color: Color,
+        title: String,
+        value: String? = nil,
+        showChevron: Bool = false
+    ) {
+        self.icon = icon
+        self.color = color
+        self.title = title
+        self.value = value
+        self.showChevron = showChevron
+    }
+
+    public var body: some View {
+        HStack {
+            SettingIcon(icon: icon, color: color)
+
+            Text(LocalizedStringKey(title))
+                .font(.body)
+                .foregroundColor(Color.appText)
+
+            Spacer()
+
+            if let value = value {
+                Text(LocalizedStringKey(value))
+                    .font(.body)
+                    .foregroundColor(Color.appSubtitle)
+                    .padding(.trailing, showChevron ? 4 : 0)
+            }
+
+            if showChevron {
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(Color.appSubtitle)
+            }
+        }
+        .contentShape(Rectangle())
+        .padding(.horizontal)
+    }
+}
+
+
+public struct ToggleSettingRow: View {
+    let icon: String
+    let color: Color
+    let title: String
+    let isOn: Bool
+    let action: () -> Void
+    @Namespace private var animation
+
+    public init(
+        icon: String,
+        color: Color,
+        title: String,
+        isOn: Bool,
+        action: @escaping () -> Void
+    ) {
+        self.icon = icon
+        self.color = color
+        self.title = title
+        self.isOn = isOn
+        self.action = action
+    }
+
+    public var body: some View {
+        HStack {
+            SettingIcon(icon: icon, color: color)
+
+            Text(LocalizedStringKey(title))
+                .font(.body)
+                .foregroundColor(Color.appText)
+
+            Spacer()
+
+            ZStack(alignment: isOn ? .trailing : .leading) {
+                Capsule()
+                    .frame(width: 42, height: 28)
+                    .foregroundColor(isOn ? Color.appGreen : Color.appSurface2)
+
+                Circle()
+                    .foregroundColor(Color.appBackground)
+                    .padding(2)
+                    .frame(width: 28, height: 28)
+                    .matchedGeometryEffect(id: "toggle\(icon)", in: animation)
+            }
+            .onTapGesture {
+                withAnimation(.spring(dampingFraction: 0.7)) {
+                    action()
+                }
+            }
+        }
+        .contentShape(Rectangle())
+        .padding(.horizontal)
+    }
+}
+
+fileprivate struct SettingIcon: View {
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        Image(systemName: icon)
+            .font(.system(size: 16, weight: .semibold))
+            .foregroundColor(.white)
+            .padding(8)
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+    }
+}
