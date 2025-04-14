@@ -263,6 +263,7 @@ public struct SettingRowWithIcon: View {
             }
         }
         .contentShape(Rectangle())
+        .padding(.vertical, 6)
         .padding(.horizontal)
     }
 }
@@ -318,6 +319,7 @@ public struct ToggleSettingRow: View {
             }
         }
         .contentShape(Rectangle())
+        .padding(.vertical, 6)
         .padding(.horizontal)
     }
 }
