@@ -8,9 +8,9 @@
 import SwiftUI
 
 public enum AppTheme: String, CaseIterable, Identifiable {
-    case system = "System"
-    case light = "Light"
-    case dark = "Dark"
+    case system = "system"
+    case light = "light"
+    case dark = "dark"
 
     public var id: String { self.rawValue }
 
@@ -57,7 +57,6 @@ public class ThemeManager: ObservableObject {
     }
 
     public init() {
-        // Initialize with saved theme or use system default
         let savedTheme =
             UserDefaults.standard.string(forKey: "appTheme") ?? AppTheme.system.rawValue
         self.theme = AppTheme(rawValue: savedTheme) ?? .system

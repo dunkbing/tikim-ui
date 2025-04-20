@@ -28,7 +28,7 @@ public struct SettingsSection<Content: View>: View {
                     .background(Color.appAccent.opacity(0.1))
                     .clipShape(Circle())
 
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.headline)
                     .foregroundColor(Color.appText)
             }
@@ -87,7 +87,7 @@ public struct ThemeButton: View {
                     .font(.system(size: 24))
                     .foregroundColor(isSelected ? Color.appAccent : Color.appText)
 
-                Text(theme.rawValue)
+                Text(LocalizedStringKey(theme.rawValue))
                     .font(.caption)
                     .foregroundColor(isSelected ? Color.appAccent : Color.appText)
             }
@@ -107,15 +107,8 @@ public struct AppearanceSetting: View {
     public init() {}
 
     public var body: some View {
-        SettingsSection(title: "Appearance", icon: "paintpalette") {
+        SettingsSection(title: "appearance", icon: "paintpalette") {
                 VStack(spacing: 16) {
-                    HStack {
-                        Text("App Theme")
-                            .foregroundColor(Color.appText)
-                            .font(.headline)
-                        Spacer()
-                    }
-
                     HStack(spacing: 20) {
                         ForEach(AppTheme.allCases) { theme in
                             ThemeButton(theme: theme)

@@ -24,7 +24,7 @@ public struct CustomTabBar: View {
                         .font(.system(size: 22))
                         .symbolVariant(selectedTab == index ? .fill : .none)
 
-                    Text(items[index].title)
+                    Text(LocalizedStringKey(items[index].title))
                         .font(.system(size: 10, weight: .semibold))
                 }
                 .frame(maxWidth: .infinity)
@@ -55,20 +55,4 @@ public struct CustomTabBar: View {
     }
 
     @Namespace private var namespace
-}
-
-// MARK: - Preview
-struct CustomTabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomTabBar(
-            selectedTab: .constant(0),
-            items: [
-                (icon: "qrcode", title: "Create"),
-                (icon: "folder", title: "Saved"),
-                (icon: "gear", title: "Settings")
-            ]
-        )
-        .previewLayout(.sizeThatFits)
-        .padding()
-    }
 }
