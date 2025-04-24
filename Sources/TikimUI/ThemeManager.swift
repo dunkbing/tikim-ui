@@ -91,7 +91,18 @@ public class ThemeManager: ObservableObject {
     public var colorScheme: ColorScheme? {
         switch theme {
         case .system:
+            #if os(iOS)
+            let style = UITraitCollection.current.userInterfaceStyle
+            return style == .dark ? .dark : .light
+            #elseif os(macOS)
+            if let appearance = NSAppearance.current {
+                return appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? .dark : .light
+            } else {
+                return nil
+            }
+            #else
             return nil
+            #endif
         case .light:
             return .light
         case .dark:
