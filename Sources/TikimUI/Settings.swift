@@ -83,15 +83,19 @@ public struct ThemeButton: View {
             themeManager.theme = theme
         }) {
             VStack(spacing: 8) {
-                Image(systemName: theme.icon)
-                    .font(.system(size: 24))
-                    .foregroundColor(isSelected ? Color.appAccent : Color.appText)
+                if theme == .vietnam {
+                    Text("🇻🇳").font(.system(size: 24))
+                } else {
+                    Image(systemName: theme.icon)
+                        .font(.system(size: 24))
+                        .foregroundColor(isSelected ? Color.appAccent : Color.appText)
+                }
 
                 Text(LocalizedStringKey(theme.rawValue))
                     .font(.caption)
                     .foregroundColor(isSelected ? Color.appAccent : Color.appText)
             }
-            .frame(width: 80, height: 70)
+            .frame(width: 70, height: 70)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .fill(
@@ -108,12 +112,9 @@ public struct AppearanceSetting: View {
 
     public var body: some View {
         SettingsSection(title: "appearance", icon: "paintpalette") {
-                VStack(spacing: 16) {
-                    HStack(spacing: 20) {
-                        ForEach(AppTheme.allCases) { theme in
-                            ThemeButton(theme: theme)
-                        }
-                        Spacer()
+                HStack(spacing: 10) {
+                    ForEach(AppTheme.allCases) { theme in
+                        ThemeButton(theme: theme)
                     }
                 }
                 .padding()

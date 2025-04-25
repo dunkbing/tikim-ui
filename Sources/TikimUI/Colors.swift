@@ -67,6 +67,38 @@ struct CatppuccinColors {
         static let mantle = Color(hex: "#1e2030")
         static let crust = Color(hex: "#181926")
     }
+
+    struct Vietnamese {
+        // Vietnamese flag colors and complementary shades
+        static let red = Color(hex: "#DA251D")        // Vietnamese flag red
+        static let yellow = Color(hex: "#FFCD00")     // Vietnamese flag yellow
+        static let darkRed = Color(hex: "#B91C17")    // Darker red
+        static let lightRed = Color(hex: "#F54A45")   // Lighter red
+        static let darkYellow = Color(hex: "#D6AD00") // Darker yellow
+        static let lightYellow = Color(hex: "#FFD633") // Lighter yellow
+
+        // Text and background colors
+        static let text = Color(hex: "#1A1A1A")       // Near black
+        static let subtext1 = Color(hex: "#333333")
+        static let subtext0 = Color(hex: "#4D4D4D")
+        static let overlay2 = Color(hex: "#666666")
+        static let overlay1 = Color(hex: "#808080")
+        static let overlay0 = Color(hex: "#999999")
+        static let surface2 = Color(hex: "#B3B3B3")
+        static let surface1 = Color(hex: "#CCCCCC")
+        static let surface0 = Color(hex: "#E6E6E6")
+        static let base = Color(hex: "#F2F2F2")       // Off-white/cream background
+        static let mantle = Color(hex: "#FAFAFA")
+        static let crust = Color(hex: "#FFFFFF")
+
+        // Accent colors
+        static let blue = Color(hex: "#228AE6")       // Complementary blue
+        static let green = Color(hex: "#28A745")      // Success/positive color
+        static let pink = Color(hex: "#DC3545")       // Alternative highlight color
+        static let mauve = Color(hex: "#6F42C1")      // Purple accent
+        static let peach = Color(hex: "#FD7E14")      // Orange accent
+        static let teal = Color(hex: "#20C997")       // Teal accent
+    }
 }
 
 // Extension to create colors from hex values
@@ -101,77 +133,105 @@ extension Color {
 
     public static var appBackground: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.base, dark: CatppuccinColors.Macchiato.base)
+            light: CatppuccinColors.Latte.base,
+            dark: CatppuccinColors.Macchiato.base,
+            vietnam: CatppuccinColors.Vietnamese.base)
     }
 
     public static var appText: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.text, dark: CatppuccinColors.Macchiato.text)
+            light: CatppuccinColors.Latte.text,
+            dark: CatppuccinColors.Macchiato.text,
+            vietnam: CatppuccinColors.Vietnamese.text)
     }
 
     public static var appSubtitle: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.subtext0, dark: CatppuccinColors.Macchiato.subtext0)
+            light: CatppuccinColors.Latte.subtext0,
+            dark: CatppuccinColors.Macchiato.subtext0,
+            vietnam: CatppuccinColors.Vietnamese.subtext0)
     }
 
     public static var appAccent: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.blue, dark: CatppuccinColors.Macchiato.blue)
+            light: CatppuccinColors.Latte.blue,
+            dark: CatppuccinColors.Macchiato.blue,
+            vietnam: CatppuccinColors.Vietnamese.red)
     }
 
     public static var appSecondaryAccent: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.mauve, dark: CatppuccinColors.Macchiato.mauve)
+            light: CatppuccinColors.Latte.mauve,
+            dark: CatppuccinColors.Macchiato.mauve,
+            vietnam: CatppuccinColors.Vietnamese.yellow)
     }
 
     public static var appGreen: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.green, dark: CatppuccinColors.Macchiato.green)
+            light: CatppuccinColors.Latte.green,
+            dark: CatppuccinColors.Macchiato.green,
+            vietnam: CatppuccinColors.Vietnamese.green)
     }
 
     public static var appRed: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.red, dark: CatppuccinColors.Macchiato.red)
+            light: CatppuccinColors.Latte.red,
+            dark: CatppuccinColors.Macchiato.red,
+            vietnam: CatppuccinColors.Vietnamese.red)
     }
 
     public static var appOrange: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.peach, dark: CatppuccinColors.Macchiato.peach)
+            light: CatppuccinColors.Latte.peach,
+            dark: CatppuccinColors.Macchiato.peach,
+            vietnam: CatppuccinColors.Vietnamese.peach)
     }
 
     public static var appYellow: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.yellow, dark: CatppuccinColors.Macchiato.yellow)
+            light: CatppuccinColors.Latte.yellow,
+            dark: CatppuccinColors.Macchiato.yellow,
+            vietnam: CatppuccinColors.Vietnamese.yellow)
     }
 
     public static var appSurface: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.surface0, dark: CatppuccinColors.Macchiato.surface0)
+            light: CatppuccinColors.Latte.surface0,
+            dark: CatppuccinColors.Macchiato.surface0,
+            vietnam: CatppuccinColors.Vietnamese.surface0)
     }
 
     public static var appSurface1: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.surface1, dark: CatppuccinColors.Macchiato.surface1)
+            light: CatppuccinColors.Latte.surface1,
+            dark: CatppuccinColors.Macchiato.surface1,
+            vietnam: CatppuccinColors.Vietnamese.surface1)
     }
 
     public static var appSurface2: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.surface2, dark: CatppuccinColors.Macchiato.surface2)
+            light: CatppuccinColors.Latte.surface2,
+            dark: CatppuccinColors.Macchiato.surface2,
+            vietnam: CatppuccinColors.Vietnamese.surface2)
     }
 
     public static var appCrust: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.crust, dark: CatppuccinColors.Macchiato.crust)
+            light: CatppuccinColors.Latte.crust,
+            dark: CatppuccinColors.Macchiato.crust,
+            vietnam: CatppuccinColors.Vietnamese.crust)
     }
 
     public static var appMantle: Color {
         AppColors.dynamicColor(
-            light: CatppuccinColors.Latte.mantle, dark: CatppuccinColors.Macchiato.mantle)
+            light: CatppuccinColors.Latte.mantle,
+            dark: CatppuccinColors.Macchiato.mantle,
+            vietnam: CatppuccinColors.Vietnamese.mantle)
     }
 }
 
 class AppColors {
-    static func dynamicColor(light: Color, dark: Color) -> Color {
+    static func dynamicColor(light: Color, dark: Color, vietnam: Color? = nil) -> Color {
         let theme = getCurrentTheme()
 
         switch theme {
@@ -187,6 +247,8 @@ class AppColors {
             #else
                 return light
             #endif
+        case .vietnam:
+            return vietnam ?? light
         }
     }
 
@@ -203,62 +265,100 @@ class AppColors {
 
     // App theme colors
     static var appBackground: Color {
-        dynamicColor(light: CatppuccinColors.Latte.base, dark: CatppuccinColors.Macchiato.base)
+        dynamicColor(
+            light: CatppuccinColors.Latte.base,
+            dark: CatppuccinColors.Macchiato.base,
+            vietnam: CatppuccinColors.Vietnamese.base)
     }
 
     static var appText: Color {
-        dynamicColor(light: CatppuccinColors.Latte.text, dark: CatppuccinColors.Macchiato.text)
+        dynamicColor(
+            light: CatppuccinColors.Latte.text,
+            dark: CatppuccinColors.Macchiato.text,
+            vietnam: CatppuccinColors.Vietnamese.text)
     }
 
     static var appSubtitle: Color {
         dynamicColor(
-            light: CatppuccinColors.Latte.subtext0, dark: CatppuccinColors.Macchiato.subtext0)
+            light: CatppuccinColors.Latte.subtext0,
+            dark: CatppuccinColors.Macchiato.subtext0,
+            vietnam: CatppuccinColors.Vietnamese.subtext0)
     }
 
     static var appAccent: Color {
-        dynamicColor(light: CatppuccinColors.Latte.blue, dark: CatppuccinColors.Macchiato.blue)
+        dynamicColor(
+            light: CatppuccinColors.Latte.blue,
+            dark: CatppuccinColors.Macchiato.blue,
+            vietnam: CatppuccinColors.Vietnamese.red)
     }
 
     static var appSecondaryAccent: Color {
-        dynamicColor(light: CatppuccinColors.Latte.mauve, dark: CatppuccinColors.Macchiato.mauve)
+        dynamicColor(
+            light: CatppuccinColors.Latte.mauve,
+            dark: CatppuccinColors.Macchiato.mauve,
+            vietnam: CatppuccinColors.Vietnamese.yellow)
     }
 
     static var appGreen: Color {
-        dynamicColor(light: CatppuccinColors.Latte.green, dark: CatppuccinColors.Macchiato.green)
+        dynamicColor(
+            light: CatppuccinColors.Latte.green,
+            dark: CatppuccinColors.Macchiato.green,
+            vietnam: CatppuccinColors.Vietnamese.green)
     }
 
     static var appRed: Color {
-        dynamicColor(light: CatppuccinColors.Latte.red, dark: CatppuccinColors.Macchiato.red)
+        dynamicColor(
+            light: CatppuccinColors.Latte.red,
+            dark: CatppuccinColors.Macchiato.red,
+            vietnam: CatppuccinColors.Vietnamese.red)
     }
 
     static var appOrange: Color {
-        dynamicColor(light: CatppuccinColors.Latte.peach, dark: CatppuccinColors.Macchiato.peach)
+        dynamicColor(
+            light: CatppuccinColors.Latte.peach,
+            dark: CatppuccinColors.Macchiato.peach,
+            vietnam: CatppuccinColors.Vietnamese.peach)
     }
 
     static var appYellow: Color {
-        dynamicColor(light: CatppuccinColors.Latte.yellow, dark: CatppuccinColors.Macchiato.yellow)
+        dynamicColor(
+            light: CatppuccinColors.Latte.yellow,
+            dark: CatppuccinColors.Macchiato.yellow,
+            vietnam: CatppuccinColors.Vietnamese.yellow)
     }
 
     static var appSurface: Color {
         dynamicColor(
-            light: CatppuccinColors.Latte.surface0, dark: CatppuccinColors.Macchiato.surface0)
+            light: CatppuccinColors.Latte.surface0,
+            dark: CatppuccinColors.Macchiato.surface0,
+            vietnam: CatppuccinColors.Vietnamese.surface0)
     }
 
     static var appSurface1: Color {
         dynamicColor(
-            light: CatppuccinColors.Latte.surface1, dark: CatppuccinColors.Macchiato.surface1)
+            light: CatppuccinColors.Latte.surface1,
+            dark: CatppuccinColors.Macchiato.surface1,
+            vietnam: CatppuccinColors.Vietnamese.surface1)
     }
 
     static var appSurface2: Color {
         dynamicColor(
-            light: CatppuccinColors.Latte.surface2, dark: CatppuccinColors.Macchiato.surface2)
+            light: CatppuccinColors.Latte.surface2,
+            dark: CatppuccinColors.Macchiato.surface2,
+            vietnam: CatppuccinColors.Vietnamese.surface2)
     }
 
     static var appCrust: Color {
-        dynamicColor(light: CatppuccinColors.Latte.crust, dark: CatppuccinColors.Macchiato.crust)
+        dynamicColor(
+            light: CatppuccinColors.Latte.crust,
+            dark: CatppuccinColors.Macchiato.crust,
+            vietnam: CatppuccinColors.Vietnamese.crust)
     }
 
     static var appMantle: Color {
-        dynamicColor(light: CatppuccinColors.Latte.mantle, dark: CatppuccinColors.Macchiato.mantle)
+        dynamicColor(
+            light: CatppuccinColors.Latte.mantle,
+            dark: CatppuccinColors.Macchiato.mantle,
+            vietnam: CatppuccinColors.Vietnamese.mantle)
     }
 }
