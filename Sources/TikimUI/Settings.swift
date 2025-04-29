@@ -188,7 +188,7 @@ public struct CustomNavigationBar<LeadingContent: View, TrailingContent: View>: 
 
             Spacer()
 
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(.headline)
                 .foregroundColor(Color.appText)
 
