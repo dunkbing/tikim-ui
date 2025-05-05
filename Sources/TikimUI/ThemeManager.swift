@@ -12,6 +12,8 @@ public enum AppTheme: String, CaseIterable, Identifiable {
     case light = "light"
     case dark = "dark"
     case vietnam = "flag"
+    case bubblegum = "bubblegum"
+    case sparkle = "sparkle"
 
     public var id: String { self.rawValue }
 
@@ -21,6 +23,8 @@ public enum AppTheme: String, CaseIterable, Identifiable {
         case .light: return "sun.max.fill"
         case .dark: return "moon.fill"
         case .vietnam: return "flag.fill"
+        case .bubblegum: return "heart.fill"
+        case .sparkle: return "sparkles"
         }
     }
 
@@ -29,11 +33,15 @@ public enum AppTheme: String, CaseIterable, Identifiable {
         case .system:
             return Color.appAccent
         case .light:
-            return CatppuccinColors.Latte.blue
+            return ColorsPalette.Latte.blue
         case .dark:
-            return CatppuccinColors.Macchiato.blue
+            return ColorsPalette.Macchiato.blue
         case .vietnam:
-            return CatppuccinColors.Vietnamese.red
+            return ColorsPalette.Vietnamese.red
+        case .bubblegum:
+            return ColorsPalette.Bubblegum.pink
+        case .sparkle:
+            return ColorsPalette.Sparkle.primary
         }
     }
 
@@ -47,6 +55,10 @@ public enum AppTheme: String, CaseIterable, Identifiable {
             return "Dark mode (Catppuccin Macchiato)"
         case .vietnam:
             return "Vietnamese theme (Fall of Saigon)"
+        case .bubblegum:
+            return "Bubblegum theme (Cute & Pink)"
+        case .sparkle:
+            return "Kawaii theme (Colorful & Cute)"
         }
     }
 }
@@ -86,7 +98,7 @@ public class ThemeManager: ObservableObject {
             switch theme {
             case .system:
                 return .unspecified
-            case .light, .vietnam:
+            case .light, .vietnam, .bubblegum, .sparkle:
                 return .light
             case .dark:
                 return .dark
@@ -109,7 +121,7 @@ public class ThemeManager: ObservableObject {
             #else
             return nil
             #endif
-        case .light, .vietnam:
+        case .light, .vietnam, .bubblegum, .sparkle:
             return .light
         case .dark:
             return .dark

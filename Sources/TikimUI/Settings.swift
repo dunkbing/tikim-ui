@@ -108,19 +108,27 @@ public struct ThemeButton: View {
 }
 
 public struct AppearanceSetting: View {
+    private let columns = [
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
+    ]
+
     public init() {}
 
     public var body: some View {
         SettingsSection(title: "appearance", icon: "paintpalette") {
-                HStack(spacing: 10) {
-                    ForEach(AppTheme.allCases) { theme in
-                        ThemeButton(theme: theme)
-                    }
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(AppTheme.allCases) { theme in
+                    ThemeButton(theme: theme)
                 }
-                .padding()
             }
+            .padding()
+        }
     }
 }
+
 
 public struct FeatureRow: View {
     let icon: String
