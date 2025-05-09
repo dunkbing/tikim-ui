@@ -185,6 +185,62 @@ struct ColorsPalette {
         static let appAccent = primary                   // Main accent color
         static let appSecondary = secondary              // Secondary accent color
     }
+
+    struct Ghibli {
+        // Main accent colors inspired by iconic Ghibli films
+        static let meadow = Color(hex: "#94C973")         // Totoro meadow green
+        static let forestSpirit = Color(hex: "#5A9367")   // Deeper forest green
+        static let skyBlue = Color(hex: "#71B3CF")        // Castle in the Sky blue
+        static let spiritedAway = Color(hex: "#DF6B88")   // Chihiro's outfit pink
+        static let calcifer = Color(hex: "#FF9642")       // Howl's Moving Castle fire
+        static let sootSprite = Color(hex: "#454545")     // Soot sprite dark gray
+        static let dustBunny = Color(hex: "#808080")      // Dust bunny gray
+        static let ponyo = Color(hex: "#EF5B5B")          // Ponyo red
+        static let haku = Color(hex: "#68C4B9")           // Dragon Haku teal
+
+        // Earthy Ghibli landscape colors
+        static let earthBrown = Color(hex: "#9E7E67")     // Natural earth tones
+        static let susuwatari = Color(hex: "#2D2D2D")     // Dark charcoal
+        static let nausicaa = Color(hex: "#8975B4")       // Purple from Nausicaa
+        static let ashitaka = Color(hex: "#BF8C60")       // Mononoke earth tone
+        static let sandGold = Color(hex: "#DBBC85")       // Nausicaa desert
+
+        // Ghibli sky and natural colors
+        static let sunsetGold = Color(hex: "#F0BC61")     // Golden sunset
+        static let laputa = Color(hex: "#7AA1D2")         // Sky kingdom blue
+        static let makkuro = Color(hex: "#31394D")        // Deep night blue
+        static let zeniba = Color(hex: "#B88E71")         // Warm cottage brown
+
+        // Text and background colors - soft natural tones
+        static let text = Color(hex: "#3A3A3A")           // Natural dark gray
+        static let subtext1 = Color(hex: "#4A4A4A")
+        static let subtext0 = Color(hex: "#5C5C5C")
+        static let overlay2 = Color(hex: "#727272")
+        static let overlay1 = Color(hex: "#898989")
+        static let overlay0 = Color(hex: "#A0A0A0")
+
+        // Surface colors - soft parchment-like background
+        static let surface2 = Color(hex: "#CCC5B9")       // Paper-like texture
+        static let surface1 = Color(hex: "#DCD5C9")       // Lighter parchment
+        static let surface0 = Color(hex: "#E8E2D6")       // Soft cream
+        static let base = Color(hex: "#F5F0E5")           // Light parchment background
+        static let mantle = Color(hex: "#EAE5DA")         // Subtle texture
+        static let crust = Color(hex: "#DFD9CE")          // Slightly darker edge
+
+        // Special accent colors
+        static let primary = meadow                        // Primary theme color
+        static let secondary = skyBlue                     // Secondary theme color
+        static let success = forestSpirit                  // Success/positive color
+        static let warning = calcifer                      // Warning color
+        static let error = ponyo                           // Error color
+        static let info = laputa                           // Information color
+
+        // App-specific colors
+        static let appText = text
+        static let appSurface = Color(hex: "#F5F0E5")      // Parchment-like white
+        static let appAccent = primary                     // Main accent color
+        static let appSecondary = secondary                // Secondary accent color
+    }
 }
 
 // Extension to create colors from hex values
@@ -223,7 +279,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.base,
             vietnam: ColorsPalette.Vietnamese.base,
             bubblegum: ColorsPalette.Bubblegum.base,
-                    sparkle: ColorsPalette.Sparkle.base)
+            sparkle: ColorsPalette.Sparkle.base,
+            ghibli: ColorsPalette.Ghibli.base)
     }
 
     public static var appText: Color {
@@ -232,7 +289,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.text,
             vietnam: ColorsPalette.Vietnamese.text,
             bubblegum: ColorsPalette.Bubblegum.text,
-                    sparkle: ColorsPalette.Sparkle.text)
+            sparkle: ColorsPalette.Sparkle.text,
+            ghibli: ColorsPalette.Ghibli.text)
     }
 
     public static var appSubtitle: Color {
@@ -241,7 +299,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.subtext0,
             vietnam: ColorsPalette.Vietnamese.subtext0,
             bubblegum: ColorsPalette.Bubblegum.subtext0,
-                    sparkle: ColorsPalette.Sparkle.subtext0)
+            sparkle: ColorsPalette.Sparkle.subtext0,
+            ghibli: ColorsPalette.Ghibli.subtext0)
     }
 
     public static var appAccent: Color {
@@ -250,7 +309,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.blue,
             vietnam: ColorsPalette.Vietnamese.red,
             bubblegum: ColorsPalette.Bubblegum.pink,
-                    sparkle: ColorsPalette.Sparkle.primary)
+            sparkle: ColorsPalette.Sparkle.primary,
+            ghibli: ColorsPalette.Ghibli.primary)
     }
 
     public static var appSecondaryAccent: Color {
@@ -259,7 +319,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.mauve,
             vietnam: ColorsPalette.Vietnamese.yellow,
             bubblegum: ColorsPalette.Bubblegum.lavender,
-                    sparkle: ColorsPalette.Sparkle.secondary)
+            sparkle: ColorsPalette.Sparkle.secondary,
+            ghibli: ColorsPalette.Ghibli.secondary)
     }
 
     public static var appGreen: Color {
@@ -268,7 +329,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.green,
             vietnam: ColorsPalette.Vietnamese.green,
             bubblegum: ColorsPalette.Bubblegum.green,
-                    sparkle: ColorsPalette.Sparkle.mintGreen)
+            sparkle: ColorsPalette.Sparkle.mintGreen,
+            ghibli: ColorsPalette.Ghibli.forestSpirit)
     }
 
     public static var appRed: Color {
@@ -277,7 +339,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.red,
             vietnam: ColorsPalette.Vietnamese.red,
             bubblegum: ColorsPalette.Bubblegum.red,
-                    sparkle: ColorsPalette.Sparkle.coral)
+            sparkle: ColorsPalette.Sparkle.coral,
+            ghibli: ColorsPalette.Ghibli.ponyo)
     }
 
     public static var appOrange: Color {
@@ -286,7 +349,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.peach,
             vietnam: ColorsPalette.Vietnamese.peach,
             bubblegum: ColorsPalette.Bubblegum.peach,
-                    sparkle: ColorsPalette.Sparkle.peach)
+            sparkle: ColorsPalette.Sparkle.peach,
+            ghibli: ColorsPalette.Ghibli.calcifer)
     }
 
     public static var appYellow: Color {
@@ -295,7 +359,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.yellow,
             vietnam: ColorsPalette.Vietnamese.yellow,
             bubblegum: ColorsPalette.Bubblegum.yellow,
-                    sparkle: ColorsPalette.Sparkle.lemonYellow)
+            sparkle: ColorsPalette.Sparkle.lemonYellow,
+            ghibli: ColorsPalette.Ghibli.sunsetGold)
     }
 
     public static var appSurface: Color {
@@ -304,7 +369,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.surface0,
             vietnam: ColorsPalette.Vietnamese.surface0,
             bubblegum: ColorsPalette.Bubblegum.surface0,
-                    sparkle: ColorsPalette.Sparkle.surface0)
+            sparkle: ColorsPalette.Sparkle.surface0,
+            ghibli: ColorsPalette.Ghibli.surface0)
     }
 
     public static var appSurface1: Color {
@@ -313,7 +379,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.surface1,
             vietnam: ColorsPalette.Vietnamese.surface1,
             bubblegum: ColorsPalette.Bubblegum.surface1,
-                    sparkle: ColorsPalette.Sparkle.surface1)
+            sparkle: ColorsPalette.Sparkle.surface1,
+            ghibli: ColorsPalette.Ghibli.surface1)
     }
 
     public static var appSurface2: Color {
@@ -322,7 +389,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.surface2,
             vietnam: ColorsPalette.Vietnamese.surface2,
             bubblegum: ColorsPalette.Bubblegum.surface2,
-                    sparkle: ColorsPalette.Sparkle.surface2)
+            sparkle: ColorsPalette.Sparkle.surface2,
+            ghibli: ColorsPalette.Ghibli.surface2)
     }
 
     public static var appCrust: Color {
@@ -331,7 +399,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.crust,
             vietnam: ColorsPalette.Vietnamese.crust,
             bubblegum: ColorsPalette.Bubblegum.crust,
-                    sparkle: ColorsPalette.Sparkle.crust)
+            sparkle: ColorsPalette.Sparkle.crust,
+            ghibli: ColorsPalette.Ghibli.crust)
     }
 
     public static var appMantle: Color {
@@ -340,7 +409,8 @@ extension Color {
             dark: ColorsPalette.Macchiato.mantle,
             vietnam: ColorsPalette.Vietnamese.mantle,
             bubblegum: ColorsPalette.Bubblegum.mantle,
-                    sparkle: ColorsPalette.Sparkle.mantle)
+            sparkle: ColorsPalette.Sparkle.mantle,
+            ghibli: ColorsPalette.Ghibli.mantle)
     }
 }
 
@@ -350,7 +420,8 @@ class AppColors {
         dark: Color,
         vietnam: Color? = nil,
         bubblegum: Color? = nil,
-        sparkle: Color? = nil
+        sparkle: Color? = nil,
+        ghibli: Color? = nil
     ) -> Color {
         let theme = getCurrentTheme()
 
@@ -373,6 +444,8 @@ class AppColors {
             return bubblegum ?? light
         case .sparkle:
             return sparkle ?? dark
+        case .ghibli:
+            return ghibli ?? light
         }
     }
 
@@ -394,7 +467,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.base,
             vietnam: ColorsPalette.Vietnamese.base,
             bubblegum: ColorsPalette.Bubblegum.base,
-            sparkle: ColorsPalette.Sparkle.base)
+            sparkle: ColorsPalette.Sparkle.base,
+            ghibli: ColorsPalette.Ghibli.base)
     }
 
     static var appText: Color {
@@ -403,7 +477,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.text,
             vietnam: ColorsPalette.Vietnamese.text,
             bubblegum: ColorsPalette.Bubblegum.text,
-            sparkle: ColorsPalette.Sparkle.text)
+            sparkle: ColorsPalette.Sparkle.text,
+            ghibli: ColorsPalette.Ghibli.text)
     }
 
     static var appSubtitle: Color {
@@ -412,7 +487,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.subtext0,
             vietnam: ColorsPalette.Vietnamese.subtext0,
             bubblegum: ColorsPalette.Bubblegum.subtext0,
-            sparkle: ColorsPalette.Sparkle.subtext0)
+            sparkle: ColorsPalette.Sparkle.subtext0,
+            ghibli: ColorsPalette.Ghibli.subtext0)
     }
 
     static var appAccent: Color {
@@ -421,7 +497,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.blue,
             vietnam: ColorsPalette.Vietnamese.red,
             bubblegum: ColorsPalette.Bubblegum.pink,
-            sparkle: ColorsPalette.Sparkle.primary)
+            sparkle: ColorsPalette.Sparkle.primary,
+            ghibli: ColorsPalette.Ghibli.primary)
     }
 
     static var appSecondaryAccent: Color {
@@ -430,7 +507,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.mauve,
             vietnam: ColorsPalette.Vietnamese.yellow,
             bubblegum: ColorsPalette.Bubblegum.lavender,
-            sparkle: ColorsPalette.Sparkle.secondary)
+            sparkle: ColorsPalette.Sparkle.secondary,
+            ghibli: ColorsPalette.Ghibli.secondary)
     }
 
     static var appGreen: Color {
@@ -439,7 +517,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.green,
             vietnam: ColorsPalette.Vietnamese.green,
             bubblegum: ColorsPalette.Bubblegum.green,
-            sparkle: ColorsPalette.Sparkle.mintGreen)
+            sparkle: ColorsPalette.Sparkle.mintGreen,
+            ghibli: ColorsPalette.Ghibli.forestSpirit)
     }
 
     static var appRed: Color {
@@ -448,7 +527,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.red,
             vietnam: ColorsPalette.Vietnamese.red,
             bubblegum: ColorsPalette.Bubblegum.red,
-            sparkle: ColorsPalette.Sparkle.coral)
+            sparkle: ColorsPalette.Sparkle.coral,
+            ghibli: ColorsPalette.Ghibli.ponyo)
     }
 
     static var appOrange: Color {
@@ -457,7 +537,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.peach,
             vietnam: ColorsPalette.Vietnamese.peach,
             bubblegum: ColorsPalette.Bubblegum.peach,
-            sparkle: ColorsPalette.Sparkle.peach)
+            sparkle: ColorsPalette.Sparkle.peach,
+            ghibli: ColorsPalette.Ghibli.calcifer)
     }
 
     static var appYellow: Color {
@@ -466,7 +547,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.yellow,
             vietnam: ColorsPalette.Vietnamese.yellow,
             bubblegum: ColorsPalette.Bubblegum.yellow,
-            sparkle: ColorsPalette.Sparkle.lemonYellow)
+            sparkle: ColorsPalette.Sparkle.lemonYellow,
+            ghibli: ColorsPalette.Ghibli.sunsetGold)
     }
 
     static var appSurface: Color {
@@ -475,7 +557,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.surface0,
             vietnam: ColorsPalette.Vietnamese.surface0,
             bubblegum: ColorsPalette.Bubblegum.surface0,
-            sparkle: ColorsPalette.Sparkle.surface0)
+            sparkle: ColorsPalette.Sparkle.surface0,
+            ghibli: ColorsPalette.Ghibli.surface0)
     }
 
     static var appSurface1: Color {
@@ -484,7 +567,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.surface1,
             vietnam: ColorsPalette.Vietnamese.surface1,
             bubblegum: ColorsPalette.Bubblegum.surface1,
-            sparkle: ColorsPalette.Sparkle.surface1)
+            sparkle: ColorsPalette.Sparkle.surface1,
+            ghibli: ColorsPalette.Ghibli.surface1)
     }
 
     static var appSurface2: Color {
@@ -493,7 +577,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.surface2,
             vietnam: ColorsPalette.Vietnamese.surface2,
             bubblegum: ColorsPalette.Bubblegum.surface2,
-            sparkle: ColorsPalette.Sparkle.surface2)
+            sparkle: ColorsPalette.Sparkle.surface2,
+            ghibli: ColorsPalette.Ghibli.surface2)
     }
 
     static var appCrust: Color {
@@ -502,7 +587,8 @@ class AppColors {
             dark: ColorsPalette.Macchiato.crust,
             vietnam: ColorsPalette.Vietnamese.crust,
             bubblegum: ColorsPalette.Bubblegum.crust,
-            sparkle: ColorsPalette.Sparkle.crust)
+            sparkle: ColorsPalette.Sparkle.crust,
+            ghibli: ColorsPalette.Ghibli.crust)
     }
 
     static var appMantle: Color {
@@ -511,6 +597,7 @@ class AppColors {
             dark: ColorsPalette.Macchiato.mantle,
             vietnam: ColorsPalette.Vietnamese.mantle,
             bubblegum: ColorsPalette.Bubblegum.mantle,
-            sparkle: ColorsPalette.Sparkle.mantle)
+            sparkle: ColorsPalette.Sparkle.mantle,
+            ghibli: ColorsPalette.Ghibli.mantle)
     }
 }

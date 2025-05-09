@@ -14,6 +14,7 @@ public enum AppTheme: String, CaseIterable, Identifiable {
     case vietnam = "flag"
     case bubblegum = "bubblegum"
     case sparkle = "sparkle"
+    case ghibli = "enchanted"
 
     public var id: String { self.rawValue }
 
@@ -25,6 +26,7 @@ public enum AppTheme: String, CaseIterable, Identifiable {
         case .vietnam: return "flag.fill"
         case .bubblegum: return "heart.fill"
         case .sparkle: return "sparkles"
+        case .ghibli: return "wand.and.stars"
         }
     }
 
@@ -42,6 +44,8 @@ public enum AppTheme: String, CaseIterable, Identifiable {
             return ColorsPalette.Bubblegum.pink
         case .sparkle:
             return ColorsPalette.Sparkle.primary
+        case .ghibli:
+            return ColorsPalette.Ghibli.primary
         }
     }
 
@@ -59,6 +63,8 @@ public enum AppTheme: String, CaseIterable, Identifiable {
             return "Bubblegum theme (Cute & Pink)"
         case .sparkle:
             return "Kawaii theme (Colorful & Cute)"
+        case .ghibli:
+            return "Ghibli theme"
         }
     }
 }
@@ -98,7 +104,7 @@ public class ThemeManager: ObservableObject {
             switch theme {
             case .system:
                 return .unspecified
-            case .light, .vietnam, .bubblegum, .sparkle:
+            case .light, .vietnam, .bubblegum, .sparkle, .ghibli:
                 return .light
             case .dark:
                 return .dark
@@ -121,7 +127,7 @@ public class ThemeManager: ObservableObject {
             #else
             return nil
             #endif
-        case .light, .vietnam, .bubblegum, .sparkle:
+        case .light, .vietnam, .bubblegum, .sparkle, .ghibli:
             return .light
         case .dark:
             return .dark
