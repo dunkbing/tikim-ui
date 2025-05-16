@@ -9,12 +9,14 @@ import SwiftUI
 
 public struct BackButton: View {
     @Environment(\.presentationMode) var presentationMode
-    var label: String = "Back"
+    var label: String = ""
     var color: Color = Color.appAccent
 
     public init(label: String) {
         self.label = label
     }
+
+    public init() {}
 
     public var body: some View {
         Button(action: {
@@ -23,8 +25,10 @@ public struct BackButton: View {
             HStack(spacing: 6) {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 16, weight: .semibold))
-                Text(label)
-                    .fontWeight(.medium)
+                if !label.isEmpty {
+                    Text(LocalizedStringKey(label))
+                        .fontWeight(.medium)
+                }
             }
             .foregroundColor(color)
             .padding(.vertical, 10)
