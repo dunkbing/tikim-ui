@@ -84,10 +84,10 @@ public struct ThemeButton: View {
         }) {
             VStack(spacing: 8) {
                 if theme == .vietnam {
-                    Text("🇻🇳").font(.system(size: 24))
+                    Text("🇻🇳").font(.system(size: 18))
                 } else {
                     Image(systemName: theme.icon)
-                        .font(.system(size: 24))
+                        .font(.system(size: 20))
                         .foregroundColor(isSelected ? Color.appAccent : Color.appText)
                 }
 
@@ -95,9 +95,9 @@ public struct ThemeButton: View {
                     .font(.caption)
                     .foregroundColor(isSelected ? Color.appAccent : Color.appText)
             }
-            .frame(width: 70, height: 70)
+            .frame(width: 64, height: 60)
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(
                         isSelected
                             ? Color.appAccent.opacity(0.1) : Color.appSurface2.opacity(0.5))
@@ -329,12 +329,18 @@ public struct ToggleSettingRow: View {
 fileprivate struct SettingIcon: View {
     let icon: String
     let color: Color
+    private var size: CGFloat = 16
 
-    var body: some View {
+    public init(icon: String, color: Color) {
+        self.icon = icon
+        self.color = color
+    }
+
+    public var body: some View {
         Image(systemName: icon)
-            .font(.system(size: 16, weight: .semibold))
+            .font(.system(size: size, weight: .semibold))
             .foregroundColor(.white)
-            .padding(8)
+            .frame(width: size + 16, height: size + 16)
             .background(color)
             .clipShape(RoundedRectangle(cornerRadius: 8))
     }
